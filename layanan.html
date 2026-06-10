@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layanan - NEXUS RENTAL</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"></div>
+      NEXUS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="layanan.html">Layanan</a></li>
+      <li><a href="review.html">Review & FAQ</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="kontak.html" class="nav-cta">Book Now</a>
+    <div class="burger" id="burger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html" onclick="closeMobile()">Beranda</a>
+    <a href="layanan.html" onclick="closeMobile()">Layanan</a>
+    <a href="review.html" onclick="closeMobile()">Review & FAQ</a>
+    <a href="kontak.html" onclick="closeMobile()">Kontak</a>
+  </div>
+
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <div class="section-header">
+      <div class="section-label">Paket Layanan</div>
+      <h2 class="section-title">Pilih <em>Setup Gaming</em> Impian Mu</h2>
+    </div>
+
+    <div class="services-grid">
+      <!-- PS5 Standard -->
+      <div class="service-card reveal">
+        <div class="service-card-num">01</div>
+        <div class="service-icon">🎮</div>
+        <h3 class="service-name">PS5 Standard</h3>
+        <p class="service-desc">Setup PlayStation 5 dengan monitor 4K 144Hz. Cocok untuk casual gaming dan bersantai.</p>
+        <div class="service-price">Rp <span>50.000</span> / jam</div>
+        <ul class="service-specs">
+          <li class="service-spec">PS5 Slim Edition</li>
+          <li class="service-spec">Monitor 4K 144Hz</li>
+          <li class="service-spec">Controller DualSense</li>
+          <li class="service-spec">Game Library 150+ Judul</li>
+        </ul>
+      </div>
+
+      <!-- PC RTX 4090 -->
+      <div class="service-card reveal">
+        <div class="service-card-num">02</div>
+        <div class="service-icon">🖥️</div>
+        <h3 class="service-name">PC RTX 4090</h3>
+        <p class="service-desc">Gaming PC premium dengan RTX 4090. Untuk esports dan gaming kompetitif tingkat tinggi.</p>
+        <div class="service-price">Rp <span>100.000</span> / jam</div>
+        <ul class="service-specs">
+          <li class="service-spec">RTX 4090 24GB VRAM</li>
+          <li class="service-spec">Intel i9-13900K</li>
+          <li class="service-spec">Monitor 360Hz</li>
+          <li class="service-spec">240+ FPS Stable</li>
+        </ul>
+      </div>
+
+      <!-- VR Zone -->
+      <div class="service-card reveal">
+        <div class="service-card-num">03</div>
+        <div class="service-icon">🥽</div>
+        <h3 class="service-name">VR Zone</h3>
+        <p class="service-desc">Pengalaman gaming immersive dengan teknologi VR terkini. Sensasi luar biasa yang belum pernah ada.</p>
+        <div class="service-price">Rp <span>75.000</span> / jam</div>
+        <ul class="service-specs">
+          <li class="service-spec">Meta Quest 3 Pro</li>
+          <li class="service-spec">200+ Game VR</li>
+          <li class="service-spec">PC Support RTX 4070</li>
+          <li class="service-spec">Full Body Tracking</li>
+        </ul>
+      </div>
+
+      <!-- PS5 + PC Bundle -->
+      <div class="service-card reveal">
+        <div class="service-card-num">04</div>
+        <div class="service-icon">🎯</div>
+        <span class="service-badge">POPULER</span>
+        <h3 class="service-name">Duo Bundle</h3>
+        <p class="service-desc">Paket hemat untuk 2 orang: 1 PS5 + 1 PC RTX 4090. Main bareng atau kompetisi.</p>
+        <div class="service-price">Rp <span>140.000</span> / jam</div>
+        <ul class="service-specs">
+          <li class="service-spec">1 PS5 + 1 PC RTX 4090</li>
+          <li class="service-spec">Monitor Dual Setup</li>
+          <li class="service-spec">Networking Setup</li>
+          <li class="service-spec">Hemat 20%</li>
+        </ul>
+      </div>
+
+      <!-- Tournament Setup -->
+      <div class="service-card reveal">
+        <div class="service-card-num">05</div>
+        <div class="service-icon">🏆</div>
+        <h3 class="service-name">Tournament Pro</h3>
+        <p class="service-desc">Setup profesional untuk turnamen esports. Dilengkapi streaming equipment dan referee setup.</p>
+        <div class="service-price">Rp <span>500.000</span> / sesi</div>
+        <ul class="service-specs">
+          <li class="service-spec">3x PC RTX 4090 + 1x PS5</li>
+          <li class="service-spec">Streaming Setup OBS</li>
+          <li class="service-spec">Commentary Booth</li>
+          <li class="service-spec">Technical Support</li>
+        </ul>
+      </div>
+
+      <!-- Group Package -->
+      <div class="service-card reveal">
+        <div class="service-card-num">06</div>
+        <div class="service-icon">👥</div>
+        <h3 class="service-name">Group Gaming</h3>
+        <p class="service-desc">Paket untuk komunitas atau kantor. Harga spesial untuk pemesanan grup 5+ orang.</p>
+        <div class="service-price">Rp <span>35.000</span> / orang</div>
+        <ul class="service-specs">
+          <li class="service-spec">Minimal 5 Orang</li>
+          <li class="service-spec">Mix Setup Bebas Pilih</li>
+          <li class="service-spec">Ruang Eksklusif</li>
+          <li class="service-spec">Diskon Tambahan 25%</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">NEXUS RENTAL</span>
+        <p class="footer-tagline">Rental gaming premium untuk generasi yang tidak mau kompromi. Setup terbaik, harga terjangkau, pengalaman tak terlupakan.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social">Instagram</a>
+          <a href="#" class="footer-social">WhatsApp</a>
+          <a href="#" class="footer-social">Discord</a>
+          <a href="#" class="footer-social">TikTok</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigasi</h5>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="layanan.html">Layanan</a></li>
+          <li><a href="review.html">Review & FAQ</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Unit Kami</h5>
+        <ul>
+          <li><a href="#">PS5 Zone</a></li>
+          <li><a href="#">PC Gaming</a></li>
+          <li><a href="#">VR Experience</a></li>
+          <li><a href="#">Tournament Area</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="#">Tentang Kami</a></li>
+          <li><a href="#">Kebijakan</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 <span>NEXUS RENTAL</span>. All rights reserved. Made with passion in Jambi.</p>
+      <div class="footer-status">
+        <span class="status-dot"></span>
+        ALL SYSTEMS OPERATIONAL
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,1591 +1,257 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="NEXUS RENTAL — Rental gaming premium dengan setup PC, console, dan VR terkini. Pengalaman gaming tak tertandingi untuk anak muda dan para gamer sejati.">
-<meta name="keywords" content="rental gaming, rental PS5, rental PC gaming, rental VR, gaming cafe, nexus rental">
-<meta name="author" content="NEXUS RENTAL">
-<meta property="og:title" content="NEXUS RENTAL — Level Up Your Game">
-<meta property="og:description" content="Rental gaming premium dengan teknologi terkini. Rasakan pengalaman gaming di level berbeda.">
-<meta property="og:type" content="website">
-<title>NEXUS RENTAL — Level Up Your Game</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap');
-
-  :root {
-    --cyan: #00e5ff;
-    --cyan-dim: #00b4c8;
-    --cyan-ghost: rgba(0,229,255,0.08);
-    --cyan-glow: rgba(0,229,255,0.3);
-    --cyan-strong: rgba(0,229,255,0.6);
-    --black: #020609;
-    --dark: #060d10;
-    --dark2: #0a1520;
-    --dark3: #0d1e2a;
-    --white: #e8f9fc;
-    --gray: #4a7a8a;
-    --gray-light: #7ab0be;
-    --border: rgba(0,229,255,0.15);
-    --font-display: 'Orbitron', monospace;
-    --font-body: 'Rajdhani', sans-serif;
-    --font-mono: 'Share Tech Mono', monospace;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; font-size: 16px; }
-
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: var(--font-body);
-    overflow-x: hidden;
-    cursor: none;
-  }
-
-  /* CUSTOM CURSOR */
-  .cursor {
-    width: 12px; height: 12px;
-    background: var(--cyan);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none; z-index: 9999;
-    transform: translate(-50%,-50%);
-    transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
-    mix-blend-mode: difference;
-  }
-  .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1px solid var(--cyan-strong);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none; z-index: 9998;
-    transform: translate(-50%,-50%);
-    transition: transform 0.15s ease-out, width 0.2s, height 0.2s, opacity 0.2s;
-  }
-
-  /* SCROLLBAR */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--black); }
-  ::-webkit-scrollbar-thumb { background: var(--cyan-dim); border-radius: 2px; }
-
-  /* NOISE TEXTURE OVERLAY */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 1;
-    opacity: 0.4;
-  }
-
-  /* SCAN LINE */
-  body::after {
-    content: '';
-    position: fixed; inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
-    pointer-events: none; z-index: 2;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    padding: 1.2rem 3rem;
-    display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid transparent;
-    transition: all 0.4s;
-  }
-  nav.scrolled {
-    background: rgba(2,6,9,0.92);
-    border-bottom-color: var(--border);
-    backdrop-filter: blur(12px);
-  }
-  .nav-logo {
-    font-family: var(--font-display);
-    font-size: 1.2rem; font-weight: 700;
-    color: var(--cyan);
-    letter-spacing: 0.15em;
-    text-decoration: none;
-    display: flex; align-items: center; gap: 0.6rem;
-  }
-  .nav-logo-mark {
-    width: 28px; height: 28px;
-    border: 2px solid var(--cyan);
-    transform: rotate(45deg);
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-  }
-  .nav-logo-mark::before {
-    content: '';
-    position: absolute; inset: 4px;
-    background: var(--cyan);
-    transform: rotate(0deg);
-  }
-  .nav-links {
-    display: flex; gap: 2.5rem; list-style: none;
-  }
-  .nav-links a {
-    font-family: var(--font-body);
-    font-size: 0.8rem; font-weight: 600;
-    color: var(--gray-light);
-    text-decoration: none;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute; bottom: -4px; left: 0; right: 100%;
-    height: 1px; background: var(--cyan);
-    transition: right 0.3s;
-  }
-  .nav-links a:hover { color: var(--cyan); }
-  .nav-links a:hover::after { right: 0; }
-  .nav-cta {
-    font-family: var(--font-display);
-    font-size: 0.7rem; font-weight: 700;
-    color: var(--black);
-    background: var(--cyan);
-    padding: 0.6rem 1.4rem;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    text-transform: uppercase;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-    transition: background 0.2s, box-shadow 0.2s;
-  }
-  .nav-cta:hover {
-    background: var(--white);
-    box-shadow: 0 0 20px var(--cyan-glow);
-  }
-  .burger {
-    display: none;
-    flex-direction: column; gap: 5px;
-    cursor: pointer; padding: 4px;
-  }
-  .burger span {
-    display: block; width: 24px; height: 2px;
-    background: var(--cyan); transition: all 0.3s;
-  }
-
-  /* HERO */
-  #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: flex-start;
-    padding: 8rem 3rem 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-  }
-  .hero-glow {
-    position: absolute;
-    top: -20%; left: -10%;
-    width: 70vw; height: 70vw;
-    background: radial-gradient(circle, rgba(0,229,255,0.05) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero-glow-2 {
-    position: absolute;
-    bottom: -20%; right: -5%;
-    width: 50vw; height: 50vw;
-    background: radial-gradient(circle, rgba(0,229,255,0.04) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero-tag {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--cyan);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex; align-items: center; gap: 0.8rem;
-    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
-  }
-  .hero-tag::before {
-    content: '';
-    display: inline-block;
-    width: 32px; height: 1px;
-    background: var(--cyan);
-  }
-  .hero-title {
-    font-family: var(--font-display);
-    font-size: clamp(3.5rem, 9vw, 8rem);
-    font-weight: 900;
-    line-height: 0.9;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
-  }
-  .hero-title .line1 { display: block; color: var(--white); }
-  .hero-title .line2 {
-    display: block;
-    color: transparent;
-    -webkit-text-stroke: 2px var(--cyan);
-    text-shadow: 0 0 40px var(--cyan-glow);
-  }
-  .hero-title .line3 { display: block; color: var(--cyan); }
-  .hero-sub {
-    max-width: 500px;
-    font-size: 1.1rem; font-weight: 400;
-    color: var(--gray-light);
-    line-height: 1.7;
-    margin-top: 1.8rem;
-    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
-  }
-  .hero-actions {
-    display: flex; gap: 1rem; align-items: center;
-    margin-top: 2.5rem;
-    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
-  }
-  .btn-primary {
-    font-family: var(--font-display);
-    font-size: 0.75rem; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--black);
-    background: var(--cyan);
-    padding: 1rem 2rem;
-    text-decoration: none;
-    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
-    transition: all 0.3s;
-    position: relative; overflow: hidden;
-  }
-  .btn-primary::before {
-    content: '';
-    position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-    background: rgba(255,255,255,0.2);
-    transform: skewX(-20deg);
-    transition: left 0.4s;
-  }
-  .btn-primary:hover { box-shadow: 0 0 30px var(--cyan-glow); }
-  .btn-primary:hover::before { left: 100%; }
-  .btn-ghost {
-    font-family: var(--font-display);
-    font-size: 0.75rem; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--cyan);
-    border: 1px solid var(--border);
-    padding: 1rem 2rem;
-    text-decoration: none;
-    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
-    transition: all 0.3s;
-  }
-  .btn-ghost:hover {
-    border-color: var(--cyan);
-    background: var(--cyan-ghost);
-    box-shadow: inset 0 0 20px rgba(0,229,255,0.08);
-  }
-  .hero-stats {
-    display: flex; gap: 3rem;
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-    opacity: 0; animation: fadeUp 0.8s 1s forwards;
-  }
-  .stat-item {}
-  .stat-number {
-    font-family: var(--font-display);
-    font-size: 2rem; font-weight: 700;
-    color: var(--cyan);
-    display: block;
-  }
-  .stat-label {
-    font-size: 0.75rem; font-weight: 500;
-    color: var(--gray);
-    letter-spacing: 0.1em; text-transform: uppercase;
-  }
-  .hero-visual {
-    position: absolute; right: 0; top: 50%;
-    transform: translateY(-50%);
-    width: 45vw; height: 70vh;
-    pointer-events: none;
-    opacity: 0; animation: fadeIn 1s 0.5s forwards;
-  }
-  .hero-visual svg { width: 100%; height: 100%; }
-
-  /* ABOUT */
-  #about {
-    padding: 8rem 3rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
-    align-items: center;
-    position: relative;
-  }
-  #about::before {
-    content: 'NEXUS';
-    position: absolute;
-    font-family: var(--font-display);
-    font-size: 20vw; font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(0,229,255,0.04);
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    white-space: nowrap; pointer-events: none;
-    letter-spacing: -0.05em;
-  }
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem; color: var(--cyan);
-    letter-spacing: 0.25em; text-transform: uppercase;
-    display: flex; align-items: center; gap: 0.8rem;
-    margin-bottom: 1.2rem;
-  }
-  .section-label::before {
-    content: '';
-    display: inline-block; width: 24px; height: 1px;
-    background: var(--cyan);
-  }
-  .about-heading {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 700; line-height: 1.1;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-  }
-  .about-heading em { font-style: normal; color: var(--cyan); }
-  .about-text {
-    font-size: 1.05rem; color: var(--gray-light);
-    line-height: 1.8; margin-bottom: 1rem;
-  }
-  .about-features {
-    margin-top: 2rem;
-    display: flex; flex-direction: column; gap: 0.8rem;
-  }
-  .about-feature {
-    display: flex; align-items: center; gap: 1rem;
-    font-size: 0.9rem; color: var(--gray-light);
-    letter-spacing: 0.05em;
-  }
-  .about-feature::before {
-    content: '';
-    width: 20px; height: 1px;
-    background: var(--cyan); flex-shrink: 0;
-  }
-  .about-visual {
-    position: relative;
-    aspect-ratio: 4/3;
-  }
-  .about-card {
-    position: absolute; inset: 0;
-    border: 1px solid var(--border);
-    background: var(--dark);
-    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
-    gap: 1px;
-    clip-path: polygon(20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px);
-    overflow: hidden;
-  }
-  .about-card-cell {
-    background: var(--dark2);
-    display: flex; flex-direction: column;
-    justify-content: flex-end; padding: 1.5rem;
-    position: relative; overflow: hidden;
-    transition: background 0.3s;
-  }
-  .about-card-cell:hover { background: var(--dark3); }
-  .about-card-cell-icon {
-    font-size: 2rem; margin-bottom: 0.5rem;
-    color: var(--cyan);
-  }
-  .about-card-cell h4 {
-    font-family: var(--font-display);
-    font-size: 0.8rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.1em;
-    color: var(--white); margin-bottom: 0.3rem;
-  }
-  .about-card-cell p {
-    font-size: 0.75rem; color: var(--gray);
-  }
-  .about-card-cell::before {
-    content: '';
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .about-card-cell:hover::before { opacity: 1; }
-
-  /* SERVICES */
-  #services {
-    padding: 8rem 3rem;
-    background: var(--dark);
-    position: relative;
-  }
-  #services::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-  }
-  #services::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-  }
-  .section-header {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 4rem;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700; text-transform: uppercase;
-    line-height: 1;
-  }
-  .section-title em { font-style: normal; color: var(--cyan); }
-  .section-count {
-    font-family: var(--font-mono);
-    font-size: 0.75rem; color: var(--gray);
-    letter-spacing: 0.15em;
-  }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-  }
-  .service-card {
-    background: var(--dark2);
-    padding: 2.5rem 2rem;
-    position: relative; overflow: hidden;
-    transition: background 0.3s;
-    cursor: pointer;
-  }
-  .service-card:hover { background: var(--dark3); }
-  .service-card-num {
-    font-family: var(--font-mono);
-    font-size: 0.65rem; color: var(--gray);
-    letter-spacing: 0.2em; margin-bottom: 2rem;
-  }
-  .service-icon {
-    width: 52px; height: 52px;
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1.5rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    font-size: 1.5rem;
-    clip-path: polygon(10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px);
-  }
-  .service-card:hover .service-icon {
-    border-color: var(--cyan);
-    box-shadow: 0 0 20px var(--cyan-ghost);
-  }
-  .service-name {
-    font-family: var(--font-display);
-    font-size: 1rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.05em;
-    color: var(--white); margin-bottom: 0.8rem;
-    transition: color 0.3s;
-  }
-  .service-card:hover .service-name { color: var(--cyan); }
-  .service-desc {
-    font-size: 0.9rem; color: var(--gray);
-    line-height: 1.7; margin-bottom: 1.5rem;
-  }
-  .service-price {
-    font-family: var(--font-display);
-    font-size: 1.4rem; font-weight: 700;
-    color: var(--cyan);
-  }
-  .service-price span {
-    font-size: 0.7rem; font-weight: 400;
-    color: var(--gray); letter-spacing: 0.1em;
-  }
-  .service-specs {
-    margin-top: 1rem;
-    display: flex; flex-direction: column; gap: 0.4rem;
-  }
-  .service-spec {
-    font-family: var(--font-mono);
-    font-size: 0.65rem; color: var(--gray);
-    letter-spacing: 0.08em;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .service-spec::before {
-    content: '>';
-    color: var(--cyan-dim);
-  }
-  .service-card::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--cyan), var(--cyan-dim));
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.4s;
-  }
-  .service-card:hover::after { transform: scaleX(1); }
-  .service-badge {
-    position: absolute; top: 1rem; right: 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.6rem; color: var(--black);
-    background: var(--cyan);
-    padding: 0.2rem 0.6rem;
-    letter-spacing: 0.1em; text-transform: uppercase;
-  }
-
-  /* TESTIMONIALS */
-  #testimonials {
-    padding: 8rem 3rem;
-    position: relative; overflow: hidden;
-  }
-  .testi-header { margin-bottom: 4rem; }
-  .testi-track {
-    display: flex; gap: 1.5rem;
-    overflow-x: auto; scroll-snap-type: x mandatory;
-    scrollbar-width: none; -ms-overflow-style: none;
-    padding-bottom: 1rem;
-  }
-  .testi-track::-webkit-scrollbar { display: none; }
-  .testi-card {
-    flex: 0 0 360px; scroll-snap-align: start;
-    border: 1px solid var(--border);
-    background: var(--dark2);
-    padding: 2rem;
-    position: relative;
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-    transition: border-color 0.3s, transform 0.3s;
-  }
-  .testi-card:hover {
-    border-color: var(--cyan-dim);
-    transform: translateY(-4px);
-  }
-  .testi-quote {
-    font-size: 2rem; color: var(--cyan);
-    line-height: 1; margin-bottom: 1rem;
-    font-family: Georgia, serif;
-  }
-  .testi-text {
-    font-size: 0.95rem; color: var(--gray-light);
-    line-height: 1.8; margin-bottom: 1.5rem;
-    font-style: italic;
-  }
-  .testi-author {
-    display: flex; align-items: center; gap: 1rem;
-    padding-top: 1rem; border-top: 1px solid var(--border);
-  }
-  .testi-avatar {
-    width: 42px; height: 42px;
-    background: var(--cyan-ghost);
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-display);
-    font-size: 0.85rem; font-weight: 700;
-    color: var(--cyan);
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-  }
-  .testi-author-name {
-    font-family: var(--font-display);
-    font-size: 0.8rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--white);
-  }
-  .testi-author-role {
-    font-size: 0.72rem; color: var(--gray);
-    letter-spacing: 0.05em; margin-top: 0.15rem;
-  }
-  .testi-stars {
-    position: absolute; top: 1.5rem; right: 1.5rem;
-    color: var(--cyan); font-size: 0.7rem; letter-spacing: 0.1em;
-  }
-  .testi-nav {
-    display: flex; gap: 0.5rem; margin-top: 2rem;
-  }
-  .testi-dot {
-    width: 24px; height: 2px;
-    background: var(--border); cursor: pointer;
-    transition: background 0.3s, width 0.3s;
-  }
-  .testi-dot.active { background: var(--cyan); width: 40px; }
-
-  /* FAQ */
-  #faq {
-    padding: 8rem 3rem;
-    background: var(--dark);
-    position: relative;
-  }
-  #faq::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-  }
-  .faq-container {
-    max-width: 780px;
-    display: flex; flex-direction: column; gap: 0.5rem;
-    margin-top: 4rem;
-  }
-  .faq-item {
-    border: 1px solid var(--border);
-    background: var(--dark2);
-    overflow: hidden;
-    transition: border-color 0.3s;
-  }
-  .faq-item.open { border-color: var(--cyan-dim); }
-  .faq-question {
-    padding: 1.4rem 1.6rem;
-    display: flex; justify-content: space-between; align-items: center;
-    cursor: pointer; gap: 1rem;
-    user-select: none;
-  }
-  .faq-q-text {
-    font-family: var(--font-body);
-    font-size: 1rem; font-weight: 600;
-    color: var(--white); letter-spacing: 0.03em;
-  }
-  .faq-icon {
-    width: 24px; height: 24px; flex-shrink: 0;
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--cyan); font-size: 1rem;
-    transition: transform 0.3s, border-color 0.3s;
-    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-  }
-  .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--cyan); }
-  .faq-answer {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.4s;
-  }
-  .faq-item.open .faq-answer { max-height: 300px; }
-  .faq-a-text {
-    padding: 0 1.6rem 1.4rem;
-    font-size: 0.9rem; color: var(--gray-light);
-    line-height: 1.8;
-  }
-
-  /* CONTACT */
-  #contact {
-    padding: 8rem 3rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
-    align-items: start;
-  }
-  .contact-info {}
-  .contact-tagline {
-    font-size: 1.05rem; color: var(--gray-light);
-    line-height: 1.8; margin: 1.5rem 0 2.5rem;
-  }
-  .contact-methods {
-    display: flex; flex-direction: column; gap: 1rem;
-  }
-  .contact-method {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 1rem 1.2rem;
-    border: 1px solid var(--border);
-    background: var(--dark2);
-    transition: border-color 0.3s;
-    text-decoration: none;
-  }
-  .contact-method:hover { border-color: var(--cyan-dim); }
-  .contact-method-icon {
-    width: 36px; height: 36px;
-    background: var(--cyan-ghost);
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem; color: var(--cyan); flex-shrink: 0;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-  }
-  .contact-method-info { flex: 1; }
-  .contact-method-label {
-    font-family: var(--font-mono);
-    font-size: 0.62rem; color: var(--gray);
-    letter-spacing: 0.15em; text-transform: uppercase;
-  }
-  .contact-method-value {
-    font-size: 0.9rem; font-weight: 600; color: var(--white);
-    margin-top: 0.1rem;
-  }
-  .contact-form {
-    display: flex; flex-direction: column; gap: 1rem;
-  }
-  .form-group { position: relative; }
-  .form-group label {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.65rem; color: var(--cyan);
-    letter-spacing: 0.18em; text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    width: 100%;
-    background: var(--dark2);
-    border: 1px solid var(--border);
-    color: var(--white);
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    padding: 0.9rem 1rem;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    -webkit-appearance: none;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-  }
-  .form-group select option { background: var(--dark2); }
-  .form-group textarea { resize: vertical; min-height: 120px; }
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    border-color: var(--cyan-dim);
-    box-shadow: 0 0 0 3px rgba(0,229,255,0.06);
-  }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-submit {
-    font-family: var(--font-display);
-    font-size: 0.8rem; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--black); background: var(--cyan);
-    border: none; padding: 1.1rem 2rem;
-    cursor: pointer;
-    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
-    transition: all 0.3s; position: relative; overflow: hidden;
-    margin-top: 0.5rem;
-  }
-  .form-submit:hover { box-shadow: 0 0 30px var(--cyan-glow); }
-  .form-submit::after {
-    content: 'TERKIRIM ✓';
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--cyan); opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .form-submit.sent::after { opacity: 1; }
-
-  /* FOOTER */
-  footer {
-    background: var(--dark);
-    border-top: 1px solid var(--border);
-    padding: 4rem 3rem 2rem;
-  }
-  .footer-top {
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
-    margin-bottom: 3rem;
-  }
-  .footer-brand {}
-  .footer-logo {
-    font-family: var(--font-display);
-    font-size: 1.2rem; font-weight: 700;
-    color: var(--cyan); letter-spacing: 0.15em;
-    display: block; margin-bottom: 1rem;
-  }
-  .footer-tagline {
-    font-size: 0.85rem; color: var(--gray);
-    line-height: 1.7; max-width: 260px;
-  }
-  .footer-socials {
-    display: flex; gap: 0.6rem; margin-top: 1.5rem;
-  }
-  .footer-social {
-    width: 34px; height: 34px;
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--gray); font-size: 0.85rem;
-    text-decoration: none;
-    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-    transition: all 0.3s;
-  }
-  .footer-social:hover { border-color: var(--cyan); color: var(--cyan); }
-  .footer-col h5 {
-    font-family: var(--font-display);
-    font-size: 0.75rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--white); margin-bottom: 1.2rem;
-  }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .footer-col ul li a {
-    font-size: 0.85rem; color: var(--gray);
-    text-decoration: none; letter-spacing: 0.03em;
-    transition: color 0.2s;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .footer-col ul li a::before {
-    content: '—';
-    font-size: 0.6rem; color: var(--cyan-dim);
-  }
-  .footer-col ul li a:hover { color: var(--cyan); }
-  .footer-bottom {
-    border-top: 1px solid var(--border);
-    padding-top: 2rem;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  .footer-copy {
-    font-family: var(--font-mono);
-    font-size: 0.7rem; color: var(--gray);
-    letter-spacing: 0.08em;
-  }
-  .footer-copy span { color: var(--cyan); }
-  .footer-status {
-    display: flex; align-items: center; gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.7rem; color: var(--gray);
-    letter-spacing: 0.1em;
-  }
-  .status-dot {
-    width: 6px; height: 6px;
-    background: #00ff88;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,255,136,0.4); }
-    50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(0,255,136,0); }
-  }
-
-  /* SCROLL ANIMATIONS */
-  .reveal {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.7s, transform 0.7s;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-left {
-    opacity: 0; transform: translateX(-30px);
-    transition: opacity 0.7s, transform 0.7s;
-  }
-  .reveal-left.visible { opacity: 1; transform: translateX(0); }
-  .reveal-right {
-    opacity: 0; transform: translateX(30px);
-    transition: opacity 0.7s, transform 0.7s;
-  }
-  .reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* MOBILE MENU */
-  .nav-mobile { display: none; }
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links, .nav-cta { display: none; }
-    .burger { display: flex; }
-    .nav-mobile {
-      display: flex; flex-direction: column; gap: 0;
-      position: fixed; top: 60px; left: 0; right: 0;
-      background: rgba(2,6,9,0.97);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-      transform: translateY(-110%);
-      transition: transform 0.4s;
-      z-index: 999;
-    }
-    .nav-mobile.open { transform: translateY(0); }
-    .nav-mobile a {
-      font-family: var(--font-display);
-      font-size: 0.85rem; font-weight: 700;
-      color: var(--gray-light); text-decoration: none;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 1.2rem 1.5rem;
-      border-bottom: 1px solid var(--border);
-      transition: color 0.2s;
-    }
-    .nav-mobile a:hover { color: var(--cyan); }
-    #hero {
-      padding: 7rem 1.5rem 3rem;
-      align-items: center; text-align: center;
-    }
-    .hero-tag { justify-content: center; }
-    .hero-title .line2 { -webkit-text-stroke-width: 1px; }
-    .hero-sub { text-align: center; }
-    .hero-actions { flex-direction: column; width: 100%; }
-    .btn-primary, .btn-ghost { text-align: center; width: 100%; }
-    .hero-stats { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
-    .hero-visual { display: none; }
-    #about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
-    .about-heading { font-size: 1.8rem; }
-    .services-grid { grid-template-columns: 1fr; }
-    #services { padding: 5rem 1.5rem; }
-    .section-header { flex-direction: column; align-items: flex-start; }
-    #testimonials { padding: 5rem 1.5rem; }
-    .testi-card { flex: 0 0 280px; }
-    #faq { padding: 5rem 1.5rem; }
-    #contact { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
-    .form-row { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    footer { padding: 3rem 1.5rem 1.5rem; }
-    .footer-bottom { flex-direction: column; text-align: center; }
-  }
-  @media (max-width: 480px) {
-    .footer-top { grid-template-columns: 1fr; }
-    .hero-title { font-size: 3rem; }
-  }
-
-  /* GLITCH EFFECT */
-  @keyframes glitch {
-    0%, 100% { clip-path: inset(0 0 100% 0); }
-    20% { clip-path: inset(20% 0 60% 0); transform: translateX(-3px); }
-    40% { clip-path: inset(50% 0 30% 0); transform: translateX(3px); }
-    60% { clip-path: inset(70% 0 10% 0); transform: translateX(-2px); }
-    80% { clip-path: inset(10% 0 80% 0); transform: translateX(2px); }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="NEXUS RENTAL — Rental gaming premium  setup PC, console, dan VR terkini. Pengalaman gaming tak tertandingi untuk anak muda dan para gamer sejati.">
+  <meta name="keywords"
+    content="rental gaming, rental PS5, rental PC gaming, rental VR, gamdenganing cafe, nexus rental">
+  <meta name="author" content="NEXUS RENTAL">
+  <meta property="og:title" content="NEXUS RENTAL — Level Up Your Game">
+  <meta property="og:description"
+    content="Rental gaming premium dengan teknologi terkini. Rasakan pengalaman gaming di level berbeda.">
+  <meta property="og:type" content="website">
+  <title>NEXUS RENTAL — Level Up Your Game</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"></div>
+      NEXUS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="layanan.html">Layanan</a></li>
+      <li><a href="review.html">Review & FAQ</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="kontak.html" class="nav-cta">Book Now</a>
+    <div class="burger" id="burger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
 
-<!-- NAV -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-mark"></div>
-    NEXUS
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">Tentang</a></li>
-    <li><a href="#services">Layanan</a></li>
-    <li><a href="#testimonials">Review</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact">Kontak</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Book Now</a>
-  <div class="burger" id="burger">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
-
-<!-- MOBILE NAV -->
-<div class="nav-mobile" id="mobileNav">
-  <a href="#about" onclick="closeMobile()">Tentang</a>
-  <a href="#services" onclick="closeMobile()">Layanan</a>
-  <a href="#testimonials" onclick="closeMobile()">Review</a>
-  <a href="#faq" onclick="closeMobile()">FAQ</a>
-  <a href="#contact" onclick="closeMobile()">Kontak</a>
-</div>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-glow-2"></div>
-  <div class="hero-tag">EST. 2022 — KOTA JAMBI</div>
-  <h1 class="hero-title">
-    <span class="line1">LEVEL UP</span>
-    <span class="line2">YOUR</span>
-    <span class="line3">GAME</span>
-  </h1>
-  <p class="hero-sub">Rental gaming premium dengan setup kelas dunia. PS5, PC RTX 4090, dan VR terkini siap menemani setiap sesi gaming-mu — dari casual hingga kompetitif.</p>
-  <div class="hero-actions">
-    <a href="#services" class="btn-primary">Lihat Paket</a>
-    <a href="#contact" class="btn-ghost">Book Sekarang</a>
-  </div>
-  <div class="hero-stats">
-    <div class="stat-item">
-      <span class="stat-number">500+</span>
-      <span class="stat-label">Pelanggan Aktif</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-number">12</span>
-      <span class="stat-label">Unit Premium</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-number">24/7</span>
-      <span class="stat-label">Siap Beroperasi</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-number">4.9★</span>
-      <span class="stat-label">Rating Google</span>
-    </div>
+  <!-- MOBILE NAV (Versi Baru Saja) -->
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html" onclick="closeMobile()">Beranda</a>
+    <a href="layanan.html" onclick="closeMobile()">Layanan</a>
+    <a href="review.html" onclick="closeMobile()">Review & FAQ</a>
+    <a href="kontak.html" onclick="closeMobile()">Kontak</a>
   </div>
 
-  <!-- SVG Hero Visual -->
-  <div class="hero-visual">
-    <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
-      <!-- Grid lines -->
-      <defs>
-        <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:0.8"/>
-          <stop offset="100%" style="stop-color:#00b4c8;stop-opacity:0.2"/>
-        </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-      <!-- Decorative lines -->
-      <line x1="100" y1="50" x2="500" y2="50" stroke="rgba(0,229,255,0.15)" stroke-width="1"/>
-      <line x1="50" y1="100" x2="50" y2="400" stroke="rgba(0,229,255,0.1)" stroke-width="1"/>
-      <line x1="550" y1="100" x2="550" y2="400" stroke="rgba(0,229,255,0.1)" stroke-width="1"/>
-      <!-- Controller outline -->
-      <path d="M180 200 Q160 180 140 200 L120 280 Q110 320 150 330 L180 330 L200 300 L280 300 L300 330 L330 330 Q370 330 360 290 L340 200 Q320 180 300 200 Z"
-            fill="none" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)" opacity="0.7"/>
-      <!-- D-pad -->
-      <rect x="145" y="240" width="12" height="36" rx="2" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5"/>
-      <rect x="133" y="252" width="36" height="12" rx="2" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5"/>
-      <!-- Buttons -->
-      <circle cx="290" cy="235" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5"/>
-      <circle cx="310" cy="255" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5"/>
-      <circle cx="290" cy="275" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5"/>
-      <circle cx="270" cy="255" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5"/>
-      <!-- Center button glowing -->
-      <circle cx="240" cy="210" r="12" fill="rgba(0,229,255,0.15)" stroke="#00e5ff" stroke-width="1" filter="url(#glow)"/>
-      <!-- Analog sticks -->
-      <circle cx="195" cy="265" r="15" fill="none" stroke="#00b4c8" stroke-width="1.5" opacity="0.6"/>
-      <circle cx="265" cy="285" r="15" fill="none" stroke="#00b4c8" stroke-width="1.5" opacity="0.6"/>
-      <!-- Scan lines on controller -->
-      <line x1="140" y1="220" x2="340" y2="220" stroke="rgba(0,229,255,0.08)" stroke-width="1"/>
-      <line x1="135" y1="240" x2="345" y2="240" stroke="rgba(0,229,255,0.08)" stroke-width="1"/>
-      <line x1="135" y1="260" x2="345" y2="260" stroke="rgba(0,229,255,0.08)" stroke-width="1"/>
-      <line x1="138" y1="280" x2="342" y2="280" stroke="rgba(0,229,255,0.08)" stroke-width="1"/>
-      <line x1="145" y1="300" x2="335" y2="300" stroke="rgba(0,229,255,0.08)" stroke-width="1"/>
-      <!-- Corner brackets -->
-      <path d="M80 150 L80 120 L110 120" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4"/>
-      <path d="M490 150 L490 120 L460 120" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4"/>
-      <path d="M80 350 L80 380 L110 380" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4"/>
-      <path d="M490 350 L490 380 L460 380" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4"/>
-      <!-- Floating data points -->
-      <circle cx="420" cy="160" r="3" fill="#00e5ff" opacity="0.6" filter="url(#glow)">
-        <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="160" cy="380" r="3" fill="#00e5ff" opacity="0.5" filter="url(#glow)">
-        <animate attributeName="opacity" values="0.5;0.15;0.5" dur="2.5s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="460" cy="350" r="2" fill="#00e5ff" opacity="0.4" filter="url(#glow)">
-        <animate attributeName="opacity" values="0.4;0.1;0.4" dur="1.8s" repeatCount="indefinite"/>
-      </circle>
-      <!-- Data text -->
-      <text x="380" y="175" font-family="Share Tech Mono" font-size="9" fill="#00e5ff" opacity="0.4">SYS: ONLINE</text>
-      <text x="380" y="188" font-family="Share Tech Mono" font-size="9" fill="#00e5ff" opacity="0.3">RTX: 4090</text>
-      <text x="380" y="201" font-family="Share Tech Mono" font-size="9" fill="#00e5ff" opacity="0.3">FPS: 240</text>
-    </svg>
-  </div>
-</section>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-tag">EST. 2022 — KOTA JAMBI</div>
+    <h1 class="hero-title">
+      <span class="line1">LEVEL UP</span>
+      <span class="line2">YOUR</span>
+      <span class="line3">GAME</span>
+    </h1>
+    <p class="hero-sub">Rental gaming premium dengan setup kelas dunia. PS5, PC RTX 4090, dan VR terkini siap menemani
+      setiap sesi gaming-mu — dari casual hingga kompetitif.</p>
+    <div class="hero-actions">
+      <a href="layanan.html" class="btn-primary">Lihat Paket</a>
+      <a href="kontak.html" class="btn-ghost">Book Sekarang</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Pelanggan Aktif</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">12</span>
+        <span class="stat-label">Unit Premium</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Siap Beroperasi</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">4.9★</span>
+        <span class="stat-label">Rating Google</span>
+      </div>
+    </div>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="reveal-left">
-    <div class="section-label">Tentang Kami</div>
-    <h2 class="about-heading">Bukan Sekadar<br><em>Rental Biasa</em></h2>
-    <p class="about-text">NEXUS lahir dari obsesi kami terhadap gaming. Kami percaya setiap gamer berhak merasakan performa terbaik — tanpa harus beli hardware seharga jutaan.</p>
-    <p class="about-text">Dengan unit yang diupgrade rutin, koneksi fiber 1Gbps, dan suasana yang dirancang khusus untuk fokus dan nyaman, NEXUS adalah rumah kedua para gamer.</p>
-    <div class="about-features">
-      <div class="about-feature">Koneksi Fiber Optik 1 Gbps, zero lag</div>
-      <div class="about-feature">Hardware diupgrade setiap 18 bulan</div>
-      <div class="about-feature">AC full room, kursi ergonomis premium</div>
-      <div class="about-feature">Game library 300+ judul siap main</div>
-      <div class="about-feature">Teknisi standby, troubleshoot instan</div>
+    <!-- SVG Hero Visual -->
+    <div class="hero-visual">
+      <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:0.8" />
+            <stop offset="100%" style="stop-color:#00b4c8;stop-opacity:0.2" />
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <!-- Decorative lines -->
+        <line x1="100" y1="50" x2="500" y2="50" stroke="rgba(0,229,255,0.15)" stroke-width="1" />
+        <line x1="50" y1="100" x2="50" y2="400" stroke="rgba(0,229,255,0.1)" stroke-width="1" />
+        <line x1="550" y1="100" x2="550" y2="400" stroke="rgba(0,229,255,0.1)" stroke-width="1" />
+        <!-- Controller outline -->
+        <path
+          d="M180 200 Q160 180 140 200 L120 280 Q110 320 150 330 L180 330 L200 300 L280 300 L300 330 L330 330 Q370 330 360 290 L340 200 Q320 180 300 200 Z"
+          fill="none" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)" opacity="0.7" />
+        <!-- D-pad -->
+        <rect x="145" y="240" width="12" height="36" rx="2" fill="none" stroke="#00e5ff" stroke-width="1.5"
+          opacity="0.5" />
+        <rect x="133" y="252" width="36" height="12" rx="2" fill="none" stroke="#00e5ff" stroke-width="1.5"
+          opacity="0.5" />
+        <!-- Buttons -->
+        <circle cx="290" cy="235" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5" />
+        <circle cx="310" cy="255" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5" />
+        <circle cx="290" cy="275" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5" />
+        <circle cx="270" cy="255" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5" />
+        <!-- Center button glowing -->
+        <circle cx="240" cy="210" r="12" fill="rgba(0,229,255,0.15)" stroke="#00e5ff" stroke-width="1"
+          filter="url(#glow)" />
+        <!-- Analog sticks -->
+        <circle cx="195" cy="265" r="15" fill="none" stroke="#00b4c8" stroke-width="1.5" opacity="0.6" />
+        <circle cx="265" cy="285" r="15" fill="none" stroke="#00b4c8" stroke-width="1.5" opacity="0.6" />
+        <!-- Scan lines on controller -->
+        <line x1="140" y1="220" x2="340" y2="220" stroke="rgba(0,229,255,0.08)" stroke-width="1" />
+        <line x1="135" y1="240" x2="345" y2="240" stroke="rgba(0,229,255,0.08)" stroke-width="1" />
+        <line x1="135" y1="260" x2="345" y2="260" stroke="rgba(0,229,255,0.08)" stroke-width="1" />
+        <line x1="138" y1="280" x2="342" y2="280" stroke="rgba(0,229,255,0.08)" stroke-width="1" />
+        <line x1="145" y1="300" x2="335" y2="300" stroke="rgba(0,229,255,0.08)" stroke-width="1" />
+        <!-- Corner brackets -->
+        <path d="M80 150 L80 120 L110 120" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4" />
+        <path d="M490 150 L490 120 L460 120" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4" />
+        <path d="M80 350 L80 380 L110 380" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4" />
+        <path d="M490 350 L490 380 L460 380" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4" />
+        <!-- Floating data points -->
+        <circle cx="420" cy="160" r="3" fill="#00e5ff" opacity="0.6" filter="url(#glow)">
+          <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="160" cy="380" r="3" fill="#00e5ff" opacity="0.5" filter="url(#glow)">
+          <animate attributeName="opacity" values="0.5;0.15;0.5" dur="2.5s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="460" cy="350" r="2" fill="#00e5ff" opacity="0.4" filter="url(#glow)">
+          <animate attributeName="opacity" values="0.4;0.1;0.4" dur="1.8s" repeatCount="indefinite" />
+        </circle>
+        <!-- Data text -->
+        <text x="380" y="175" font-family="Share Tech Mono" font-size="9" fill="#00e5ff" opacity="0.4">SYS:
+          ONLINE</text>
+        <text x="380" y="188" font-family="Share Tech Mono" font-size="9" fill="#00e5ff" opacity="0.3">RTX: 4090</text>
+        <text x="380" y="201" font-family="Share Tech Mono" font-size="9" fill="#00e5ff" opacity="0.3">FPS: 240</text>
+      </svg>
     </div>
-  </div>
-  <div class="about-visual reveal-right">
-    <div class="about-card">
-      <div class="about-card-cell">
-        <div class="about-card-cell-icon">🎮</div>
-        <h4>Console Zone</h4>
-        <p>PS5, Xbox Series X</p>
-      </div>
-      <div class="about-card-cell">
-        <div class="about-card-cell-icon">🖥️</div>
-        <h4>PC Battlestation</h4>
-        <p>RTX 4090, 240Hz</p>
-      </div>
-      <div class="about-card-cell">
-        <div class="about-card-cell-icon">🥽</div>
-        <h4>VR Arena</h4>
-        <p>Meta Quest 3, PSVR2</p>
-      </div>
-      <div class="about-card-cell">
-        <div class="about-card-cell-icon">⚡</div>
-        <h4>Esports Corner</h4>
-        <p>Setup kompetitif</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-header reveal">
-    <div>
-      <div class="section-label">Paket Layanan</div>
-      <h2 class="section-title">Pilih <em>Setup-mu</em></h2>
-    </div>
-    <span class="section-count">// 06 UNIT TERSEDIA</span>
-  </div>
-  <div class="services-grid reveal">
-    <div class="service-card">
-      <div class="service-card-num">[ 01 ]</div>
-      <div class="service-icon">🎮</div>
-      <div class="service-name">Console Zone</div>
-      <p class="service-desc">Nikmati PS5 atau Xbox Series X dengan layar 4K OLED 55" dan sound system surround. Cocok untuk main bareng teman.</p>
-      <div class="service-price">Rp 15.000 <span>/ jam</span></div>
-      <div class="service-specs">
-        <span class="service-spec">PS5 + Xbox Series X</span>
-        <span class="service-spec">4K OLED 55" LG</span>
-        <span class="service-spec">Sound Surround 5.1</span>
-        <span class="service-spec">300+ Game Library</span>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="reveal-left">
+      <div class="section-label">Tentang Kami</div>
+      <h2 class="about-heading">Bukan Sekadar<br><em>Rental Biasa</em></h2>
+      <p class="about-text">NEXUS lahir dari obsesi kami terhadap gaming. Kami percaya setiap gamer berhak merasakan
+        performa terbaik — tanpa harus beli hardware seharga jutaan.</p>
+      <p class="about-text">Dengan unit yang diupgrade rutin, koneksi fiber 1Gbps, dan suasana yang dirancang khusus
+        untuk fokus dan nyaman, NEXUS adalah rumah kedua para gamer.</p>
+      <div class="about-features">
+        <div class="about-feature">Koneksi Fiber Optik 1 Gbps, zero lag</div>
+        <div class="about-feature">Hardware diupgrade setiap 18 bulan</div>
+        <div class="about-feature">AC full room, kursi ergonomis premium</div>
+        <div class="about-feature">Game library 300+ judul siap main</div>
+        <div class="about-feature">Teknisi standby, troubleshoot instan</div>
       </div>
     </div>
-    <div class="service-card">
-      <div class="service-badge">TERPOPULER</div>
-      <div class="service-card-num">[ 02 ]</div>
-      <div class="service-icon">🖥️</div>
-      <div class="service-name">PC Battlestation</div>
-      <p class="service-desc">PC gaming high-end dengan RTX 4090 dan monitor 240Hz. Untuk kamu yang main kompetitif dan butuh performa tanpa kompromi.</p>
-      <div class="service-price">Rp 20.000 <span>/ jam</span></div>
-      <div class="service-specs">
-        <span class="service-spec">RTX 4090 + i9-13900K</span>
-        <span class="service-spec">240Hz 1440p Monitor</span>
-        <span class="service-spec">RAM 32GB DDR5</span>
-        <span class="service-spec">Fiber 1Gbps Dedicated</span>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-num">[ 03 ]</div>
-      <div class="service-icon">🥽</div>
-      <div class="service-name">VR Arena</div>
-      <p class="service-desc">Masuk dunia virtual dengan headset terkini. Pengalaman immersive yang tidak bisa kamu rasakan di tempat lain.</p>
-      <div class="service-price">Rp 25.000 <span>/ jam</span></div>
-      <div class="service-specs">
-        <span class="service-spec">Meta Quest 3 + PSVR2</span>
-        <span class="service-spec">Room-Scale Tracking</span>
-        <span class="service-spec">50+ VR Game Titles</span>
-        <span class="service-spec">Haptic Controllers</span>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-num">[ 04 ]</div>
-      <div class="service-icon">⚡</div>
-      <div class="service-name">Esports Corner</div>
-      <p class="service-desc">Setup kompetitif untuk yang serius. Monitor 360Hz, mouse sensor premium, dan keyboard mekanikal tactile.</p>
-      <div class="service-price">Rp 18.000 <span>/ jam</span></div>
-      <div class="service-specs">
-        <span class="service-spec">360Hz ASUS ROG</span>
-        <span class="service-spec">Logitech G Pro X2</span>
-        <span class="service-spec">Keyboard Optical Tactile</span>
-        <span class="service-spec">Anti-Ghosting 100%</span>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-num">[ 05 ]</div>
-      <div class="service-icon">👥</div>
-      <div class="service-name">Party Room</div>
-      <p class="service-desc">Ruangan khusus untuk kelompok 4-8 orang. LAN party, turnamen kecil, atau ulang tahun bertema gaming.</p>
-      <div class="service-price">Rp 80.000 <span>/ jam / grup</span></div>
-      <div class="service-specs">
-        <span class="service-spec">4-8 Seat Kapasitas</span>
-        <span class="service-spec">Private Room Eksklusif</span>
-        <span class="service-spec">LAN Setup Ready</span>
-        <span class="service-spec">Snack + Minuman Inkl.</span>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-badge">NEW</div>
-      <div class="service-card-num">[ 06 ]</div>
-      <div class="service-icon">🏆</div>
-      <div class="service-name">Monthly Pass</div>
-      <p class="service-desc">Unlimited access semua unit selama sebulan penuh. Terbaik untuk gamer rutin yang mau hemat lebih banyak.</p>
-      <div class="service-price">Rp 350.000 <span>/ bulan</span></div>
-      <div class="service-specs">
-        <span class="service-spec">Akses 30 Hari Penuh</span>
-        <span class="service-spec">Priority Booking</span>
-        <span class="service-spec">Diskon Snack 15%</span>
-        <span class="service-spec">Member Card Eksklusif</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="testi-header reveal">
-    <div class="section-label">Social Proof</div>
-    <h2 class="section-title">Kata <em>Mereka</em></h2>
-  </div>
-  <div class="testi-track" id="testiTrack">
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-quote">"</div>
-      <p class="testi-text">PC-nya dewa banget. Main Valorant FPS-nya stabil di 300+ terus, nggak pernah drop. Udah jadi tempat latihan rutin gue setiap weekend.</p>
-      <div class="testi-author">
-        <div class="testi-avatar">RZ</div>
-        <div>
-          <div class="testi-author-name">Rizky Pratama</div>
-          <div class="testi-author-role">Competitive FPS Player</div>
+    <div class="about-visual reveal-right">
+      <div class="about-card">
+        <div class="about-card-cell">
+          <div class="about-card-cell-icon">🎮</div>
+          <h4>Console Zone</h4>
+          <p>PS5, Xbox Series X</p>
+        </div>
+        <div class="about-card-cell">
+          <div class="about-card-cell-icon">🖥️</div>
+          <h4>PC Battlestation</h4>
+          <p>RTX 4090, 240Hz</p>
+        </div>
+        <div class="about-card-cell">
+          <div class="about-card-cell-icon">🥽</div>
+          <h4>VR Arena</h4>
+          <p>Meta Quest 3, PSVR2</p>
+        </div>
+        <div class="about-card-cell">
+          <div class="about-card-cell-icon">⚡</div>
+          <h4>Esports Corner</h4>
+          <p>Setup kompetitif</p>
         </div>
       </div>
     </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-quote">"</div>
-      <p class="testi-text">Bawa anak-anak ke party room buat ulang tahunnya. Mereka seneng banget! Staff-nya ramah dan profesional. Pasti balik lagi.</p>
-      <div class="testi-author">
-        <div class="testi-avatar">BK</div>
-        <div>
-          <div class="testi-author-name">Bapak Khoirul</div>
-          <div class="testi-author-role">Parent & Casual Gamer</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">NEXUS RENTAL</span>
+        <p class="footer-tagline">Rental gaming premium untuk generasi yang tidak mau kompromi. Setup terbaik, harga
+          terjangkau, pengalaman tak terlupakan.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social">ig</a>
+          <a href="#" class="footer-social">tt</a>
+          <a href="#" class="footer-social">yt</a>
+          <a href="#" class="footer-social">wa</a>
         </div>
       </div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-quote">"</div>
-      <p class="testi-text">VR-nya bikin gue lupa waktu. Main Beat Saber satu jam berasa 10 menit. Pengalaman gaming paling gila yang pernah gue rasain di Jambi.</p>
-      <div class="testi-author">
-        <div class="testi-avatar">DS</div>
-        <div>
-          <div class="testi-author-name">Dinda Savira</div>
-          <div class="testi-author-role">VR Enthusiast</div>
-        </div>
+      <div class="footer-col">
+        <h5>Navigasi</h5>
+        <ul>
+          <li><a href="index.html">Tentang Kami</a></li>
+          <li><a href="layanan.html">Layanan & Paket</a></li>
+          <li><a href="review.html">Review Pelanggan</a></li>
+          <li><a href="review.html">FAQ</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Unit Kami</h5>
+        <ul>
+          <li><a href="layanan.html">Console Zone</a></li>
+          <li><a href="layanan.html">PC Battlestation</a></li>
+          <li><a href="layanan.html">VR Arena</a></li>
+          <li><a href="layanan.html">Esports Corner</a></li>
+          <li><a href="layanan.html">Party Room</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="#">Syarat & Ketentuan</a></li>
+          <li><a href="#">Kebijakan Privasi</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Karir</a></li>
+          <li><a href="#">Promo & Event</a></li>
+        </ul>
       </div>
     </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-quote">"</div>
-      <p class="testi-text">Monthly pass worth it banget! Sehari-hari pulang kerja mampir sini jadi hiburan. Harganya masuk akal buat setup segini.</p>
-      <div class="testi-author">
-        <div class="testi-avatar">AF</div>
-        <div>
-          <div class="testi-author-name">Ahmad Fauzi</div>
-          <div class="testi-author-role">Office Worker & Gamer</div>
-        </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 <span>NEXUS RENTAL</span>. All rights reserved. Made with passion in Jambi.</p>
+      <div class="footer-status">
+        <span class="status-dot"></span>
+        ALL SYSTEMS OPERATIONAL
       </div>
     </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★☆</div>
-      <div class="testi-quote">"</div>
-      <p class="testi-text">Tempat paling clean buat nge-game di Jambi. Kursi nyaman, AC dingin, dan internetnya nggak pernah nge-lag walau rame.</p>
-      <div class="testi-author">
-        <div class="testi-avatar">YS</div>
-        <div>
-          <div class="testi-author-name">Yolanda Sari</div>
-          <div class="testi-author-role">Streamer Content Creator</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="testi-nav" id="testiNav"></div>
-</section>
+  </footer>
 
-<!-- FAQ -->
-<section id="faq">
-  <div class="reveal">
-    <div class="section-label">Pertanyaan Umum</div>
-    <h2 class="section-title">FAQ</h2>
-  </div>
-  <div class="faq-container reveal">
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">Apakah perlu booking terlebih dahulu?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p class="faq-a-text">Walk-in diperbolehkan, tapi kami sangat menyarankan booking terlebih dahulu — terutama untuk weekend dan unit VR yang terbatas. Booking bisa melalui WhatsApp, form di website ini, atau langsung datang ke tempat kami.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">Berapa lama minimum sesi rental?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p class="faq-a-text">Minimum sesi adalah 1 jam untuk semua unit. Tidak ada batas maksimum — kamu bisa extend selama unit masih tersedia. Kami akan notifikasi 15 menit sebelum waktu habis.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">Apakah bisa bawa akun game sendiri?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p class="faq-a-text">Tentu! Kamu bebas login dengan akun game-mu sendiri di semua unit PC dan Console. Data akun akan terhapus otomatis setelah sesi berakhir untuk keamananmu.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">Game apa saja yang tersedia?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p class="faq-a-text">Library kami mencakup 300+ judul meliputi: Valorant, CSGO 2, Apex Legends, GTA V, Cyberpunk 2077, Elden Ring, FIFA 25, NBA 2K25, dan masih banyak lagi. Daftar lengkap bisa dilihat di tempat atau hubungi kami.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">Apakah ada paket untuk pelajar/mahasiswa?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p class="faq-a-text">Ada! Dengan menunjukkan kartu pelajar atau KTM, kamu mendapat diskon 20% untuk semua unit pada hari Senin-Jumat (jam 08.00-16.00). Promo ini berlaku untuk setiap kunjungan.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">Bagaimana cara pembayaran?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p class="faq-a-text">Kami menerima pembayaran tunai, transfer bank (BCA, Mandiri, BRI), dan semua e-wallet populer (GoPay, OVO, DANA, ShopeePay). Pembayaran dilakukan di awal sesi.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-info reveal-left">
-    <div class="section-label">Hubungi Kami</div>
-    <h2 class="section-title">Let's <em>Connect</em></h2>
-    <p class="contact-tagline">Ada pertanyaan, mau booking, atau sekadar ingin tahu lebih? Kami siap merespons dalam hitungan menit.</p>
-    <div class="contact-methods">
-      <a href="https://wa.me/6281234567890" class="contact-method">
-        <div class="contact-method-icon">💬</div>
-        <div class="contact-method-info">
-          <div class="contact-method-label">WhatsApp</div>
-          <div class="contact-method-value">+62 812-3456-7890</div>
-        </div>
-      </a>
-      <a href="mailto:hello@nexus-gaming.id" class="contact-method">
-        <div class="contact-method-icon">📧</div>
-        <div class="contact-method-info">
-          <div class="contact-method-label">Email</div>
-          <div class="contact-method-value">hello@nexus-gaming.id</div>
-        </div>
-      </a>
-      <a href="#" class="contact-method">
-        <div class="contact-method-icon">📍</div>
-        <div class="contact-method-info">
-          <div class="contact-method-label">Lokasi</div>
-          <div class="contact-method-value">Jl. Hayam Wuruk No. 42, Jambi</div>
-        </div>
-      </a>
-      <a href="#" class="contact-method">
-        <div class="contact-method-icon">🕐</div>
-        <div class="contact-method-info">
-          <div class="contact-method-label">Jam Operasional</div>
-          <div class="contact-method-value">Setiap Hari, 10.00 – 24.00 WIB</div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <div class="reveal-right">
-    <div class="contact-form" id="contactForm">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="nama">Nama</label>
-          <input type="text" id="nama" placeholder="Nama kamu">
-        </div>
-        <div class="form-group">
-          <label for="phone">WhatsApp</label>
-          <input type="tel" id="phone" placeholder="08xx-xxxx-xxxx">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="unit">Unit yang Diminati</label>
-        <select id="unit">
-          <option value="" disabled selected>Pilih unit...</option>
-          <option>Console Zone (PS5/Xbox)</option>
-          <option>PC Battlestation (RTX 4090)</option>
-          <option>VR Arena</option>
-          <option>Esports Corner</option>
-          <option>Party Room</option>
-          <option>Monthly Pass</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="tanggal">Tanggal & Waktu</label>
-        <input type="datetime-local" id="tanggal">
-      </div>
-      <div class="form-group">
-        <label for="pesan">Pesan (opsional)</label>
-        <textarea id="pesan" placeholder="Ada request khusus atau pertanyaan?"></textarea>
-      </div>
-      <button class="form-submit" id="submitBtn" onclick="handleSubmit()">KIRIM BOOKING REQUEST →</button>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <span class="footer-logo">NEXUS RENTAL</span>
-      <p class="footer-tagline">Rental gaming premium untuk generasi yang tidak mau kompromi. Setup terbaik, harga terjangkau, pengalaman tak terlupakan.</p>
-      <div class="footer-socials">
-        <a href="#" class="footer-social">ig</a>
-        <a href="#" class="footer-social">tt</a>
-        <a href="#" class="footer-social">yt</a>
-        <a href="#" class="footer-social">wa</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h5>Navigasi</h5>
-      <ul>
-        <li><a href="#about">Tentang Kami</a></li>
-        <li><a href="#services">Layanan & Paket</a></li>
-        <li><a href="#testimonials">Review Pelanggan</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Kontak</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Unit Kami</h5>
-      <ul>
-        <li><a href="#services">Console Zone</a></li>
-        <li><a href="#services">PC Battlestation</a></li>
-        <li><a href="#services">VR Arena</a></li>
-        <li><a href="#services">Esports Corner</a></li>
-        <li><a href="#services">Party Room</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Info</h5>
-      <ul>
-        <li><a href="#">Syarat & Ketentuan</a></li>
-        <li><a href="#">Kebijakan Privasi</a></li>
-        <li><a href="#">Refund Policy</a></li>
-        <li><a href="#">Karir</a></li>
-        <li><a href="#">Promo & Event</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2024 <span>NEXUS RENTAL</span>. All rights reserved. Made with passion in Jambi.</p>
-    <div class="footer-status">
-      <span class="status-dot"></span>
-      ALL SYSTEMS OPERATIONAL
-    </div>
-  </div>
-</footer>
-
-<script>
-  // CURSOR
-  const cursor = document.getElementById('cursor');
-  const cursorRing = document.getElementById('cursorRing');
-  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-  document.addEventListener('mousemove', e => {
-    mouseX = e.clientX; mouseY = e.clientY;
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
-  });
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
-    cursorRing.style.left = ringX + 'px';
-    cursorRing.style.top = ringY + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
-  document.querySelectorAll('a, button, .service-card, .faq-question').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width = '20px';
-      cursor.style.height = '20px';
-      cursorRing.style.width = '50px';
-      cursorRing.style.height = '50px';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width = '12px';
-      cursor.style.height = '12px';
-      cursorRing.style.width = '36px';
-      cursorRing.style.height = '36px';
-    });
-  });
-
-  // NAVBAR SCROLL
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  // BURGER
-  const burger = document.getElementById('burger');
-  const mobileNav = document.getElementById('mobileNav');
-  let menuOpen = false;
-  burger.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    mobileNav.classList.toggle('open', menuOpen);
-    burger.querySelectorAll('span')[0].style.transform = menuOpen ? 'rotate(45deg) translate(5px,5px)' : '';
-    burger.querySelectorAll('span')[1].style.opacity = menuOpen ? '0' : '1';
-    burger.querySelectorAll('span')[2].style.transform = menuOpen ? 'rotate(-45deg) translate(5px,-5px)' : '';
-  });
-  function closeMobile() {
-    menuOpen = false;
-    mobileNav.classList.remove('open');
-    burger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = '1'; });
-  }
-
-  // SCROLL REVEAL
-  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => observer.observe(el));
-
-  // FAQ
-  document.querySelectorAll('.faq-question').forEach(q => {
-    q.addEventListener('click', () => {
-      const item = q.parentElement;
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
-  });
-
-  // TESTIMONIAL DOTS
-  const track = document.getElementById('testiTrack');
-  const cards = track.querySelectorAll('.testi-card');
-  const navEl = document.getElementById('testiNav');
-  cards.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'testi-dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => {
-      cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-    });
-    navEl.appendChild(dot);
-  });
-  track.addEventListener('scroll', () => {
-    const dots = navEl.querySelectorAll('.testi-dot');
-    const idx = Math.round(track.scrollLeft / (cards[0].offsetWidth + 24));
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-  });
-
-  // FORM SUBMIT
-  function handleSubmit() {
-    const btn = document.getElementById('submitBtn');
-    const nama = document.getElementById('nama').value;
-    const phone = document.getElementById('phone').value;
-    const unit = document.getElementById('unit').value;
-    if (!nama || !phone || !unit) {
-      alert('Mohon isi Nama, WhatsApp, dan Unit terlebih dahulu.');
-      return;
-    }
-    btn.textContent = 'MENGIRIM...';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.classList.add('sent');
-      btn.textContent = 'TERKIRIM ✓';
-      setTimeout(() => {
-        btn.textContent = 'KIRIM BOOKING REQUEST →';
-        btn.classList.remove('sent');
-        btn.disabled = false;
-        document.getElementById('contactForm').reset();
-      }, 3000);
-    }, 1200);
-  }
-
-  // PARALLAX HERO GLOW
-  window.addEventListener('mousemove', e => {
-    const glow = document.querySelector('.hero-glow');
-    if (glow) {
-      const x = (e.clientX / window.innerWidth) * 10 - 5;
-      const y = (e.clientY / window.innerHeight) * 10 - 5;
-      glow.style.transform = `translate(${x}px, ${y}px)`;
-    }
-  });
-</script>
+  <script src="script.js"></script>
 </body>
+
 </html>

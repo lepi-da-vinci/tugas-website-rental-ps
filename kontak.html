@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak - NEXUS RENTAL</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"></div>
+      NEXUS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="layanan.html">Layanan</a></li>
+      <li><a href="review.html">Review & FAQ</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="kontak.html" class="nav-cta">Book Now</a>
+    <div class="burger" id="burger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html" onclick="closeMobile()">Beranda</a>
+    <a href="layanan.html" onclick="closeMobile()">Layanan</a>
+    <a href="review.html" onclick="closeMobile()">Review & FAQ</a>
+    <a href="kontak.html" onclick="closeMobile()">Kontak</a>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <div class="section-header">
+      <div class="section-label">Hubungi Kami</div>
+      <h2 class="section-title">Siap untuk <em>Level Up?</em></h2>
+      <p class="contact-tagline">Hubungi kami untuk booking atau pertanyaan. Response time maksimal 1 jam!</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin: 4rem 0;">
+      <!-- LEFT: CONTACT INFO -->
+      <div class="contact-info reveal-left">
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-method-icon">📱</div>
+            <div class="contact-method-info">
+              <p class="contact-method-label">WhatsApp (Prioritas)</p>
+              <p class="contact-method-value">+62 812-3456-7890</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">📍</div>
+            <div class="contact-method-info">
+              <p class="contact-method-label">Lokasi Kami</p>
+              <p class="contact-method-value">Jl. Gatot Subroto No. 45, Kota Jambi</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">⏰</div>
+            <div class="contact-method-info">
+              <p class="contact-method-label">Jam Operasional</p>
+              <p class="contact-method-value">10:00 - 02:00 (24 Jam pada Akhir Pekan)</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">📧</div>
+            <div class="contact-method-info">
+              <p class="contact-method-label">Email</p>
+              <p class="contact-method-value">info@nexusrental.com</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">🔗</div>
+            <div class="contact-method-info">
+              <p class="contact-method-label">Social Media</p>
+              <p class="contact-method-value">@nexusrental (Instagram, TikTok, Discord)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: BOOKING FORM -->
+      <div class="reveal-right">
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="nama">Nama Lengkap*</label>
+            <input type="text" id="nama" name="nama" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">WhatsApp*</label>
+              <input type="tel" id="phone" name="phone" placeholder="08xx-xxxx-xxxx" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="unit">Pilih Unit/Layanan*</label>
+            <select id="unit" name="unit" required>
+              <option value="">-- Pilih Layanan --</option>
+              <option value="ps5-standard">PS5 Standard</option>
+              <option value="pc-rtx4090">PC RTX 4090</option>
+              <option value="vr-zone">VR Zone</option>
+              <option value="duo-bundle">Duo Bundle</option>
+              <option value="tournament-pro">Tournament Pro</option>
+              <option value="group-gaming">Group Gaming</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tanggal">Tanggal Booking*</label>
+              <input type="date" id="tanggal" name="tanggal" required>
+            </div>
+            <div class="form-group">
+              <label for="jam">Jam Mulai*</label>
+              <input type="time" id="jam" name="jam" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="durasi">Durasi (Jam)*</label>
+            <input type="number" id="durasi" name="durasi" min="1" value="1" required>
+          </div>
+
+          <div class="form-group">
+            <label for="pesan">Catatan (opsional)</label>
+            <textarea id="pesan" name="pesan" placeholder="Ada permintaan khusus? Tulis di sini..."></textarea>
+          </div>
+
+          <button type="button" class="form-submit" id="submitBtn" onclick="handleSubmit()">KIRIM BOOKING REQUEST →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">NEXUS RENTAL</span>
+        <p class="footer-tagline">Rental gaming premium untuk generasi yang tidak mau kompromi. Setup terbaik, harga terjangkau, pengalaman tak terlupakan.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social">Instagram</a>
+          <a href="#" class="footer-social">WhatsApp</a>
+          <a href="#" class="footer-social">Discord</a>
+          <a href="#" class="footer-social">TikTok</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigasi</h5>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="layanan.html">Layanan</a></li>
+          <li><a href="review.html">Review & FAQ</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Unit Kami</h5>
+        <ul>
+          <li><a href="#">PS5 Zone</a></li>
+          <li><a href="#">PC Gaming</a></li>
+          <li><a href="#">VR Experience</a></li>
+          <li><a href="#">Tournament Area</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="#">Tentang Kami</a></li>
+          <li><a href="#">Kebijakan</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 <span>NEXUS RENTAL</span>. All rights reserved. Made with passion in Jambi.</p>
+      <div class="footer-status">
+        <span class="status-dot"></span>
+        ALL SYSTEMS OPERATIONAL
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

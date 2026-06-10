@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review & FAQ - NEXUS RENTAL</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"></div>
+      NEXUS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="layanan.html">Layanan</a></li>
+      <li><a href="review.html">Review & FAQ</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="kontak.html" class="nav-cta">Book Now</a>
+    <div class="burger" id="burger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html" onclick="closeMobile()">Beranda</a>
+    <a href="layanan.html" onclick="closeMobile()">Layanan</a>
+    <a href="review.html" onclick="closeMobile()">Review & FAQ</a>
+    <a href="kontak.html" onclick="closeMobile()">Kontak</a>
+  </div>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section id="testimonials">
+    <div class="section-header testi-header">
+      <div class="section-label">Review Pelanggan</div>
+      <h2 class="section-title">Apa Kata <em>Gamer Sejati</em> Kami</h2>
+    </div>
+
+    <div class="testi-track" id="testiTrack">
+      <div class="testi-card reveal">
+        <p class="testi-quote">"</p>
+        <p class="testi-text">Setup PC di NEXUS benar-benar luar biasa. RTX 4090 dengan performance stabil 240+ FPS. Ini tempat terbaik untuk latihan esports!</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AR</div>
+          <div>
+            <p class="testi-author-name">Arjun Rafif</p>
+            <p class="testi-author-role">Pro Esports Player</p>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <p class="testi-quote">"</p>
+        <p class="testi-text">VR experience yang mereka tawarkan gila-gilaan seru. Rasanya seperti dunia benar-benar berbeda. Worth it banget untuk harga yang ditawarkan!</p>
+        <div class="testi-author">
+          <div class="testi-avatar">TS</div>
+          <div>
+            <p class="testi-author-name">Tania Sila</p>
+            <p class="testi-author-role">Content Creator</p>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <p class="testi-quote">"</p>
+        <p class="testi-text">Tempat yang cocok untuk berkumpul dengan teman-teman untuk main bareng. Suasana nyaman, AC dingin, internet kencang. Suka banget!</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RK</div>
+          <div>
+            <p class="testi-author-name">Ricky Kurnia</p>
+            <p class="testi-author-role">Gaming Enthusiast</p>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <p class="testi-quote">"</p>
+        <p class="testi-text">Pelayanan customer service mereka sangat responsif. Masalah teknis langsung diatasi. Tim profesional yang tahu apa yang dilakukan.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">DP</div>
+          <div>
+            <p class="testi-author-name">Dinda Putri</p>
+            <p class="testi-author-role">Regular Customer</p>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-nav" id="testiNav"></div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq">
+    <div class="section-header">
+      <div class="section-label">Pertanyaan Umum</div>
+      <h2 class="section-title">Semua Jawaban Ada <em>Di Sini</em></h2>
+    </div>
+
+    <div class="faq-container">
+      <div class="faq-item open">
+        <div class="faq-question">
+          <span class="faq-q-text">Berapa lama minimal waktu booking?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-a-text">Minimal pemesanan adalah 1 jam. Tapi kalau mau lebih lama, diskon otomatis berlaku. Misal: 3 jam dapat diskon 10%, 5 jam dapat diskon 15%.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-q-text">Apa saja game yang tersedia?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-a-text">Kami punya 300+ game untuk semua platform. Dari Elden Ring, Call of Duty, Valorant, hingga indie game hits terbaru. Kalau ada game tertentu yang mau dimain, bisa request ke staff kami.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-q-text">Bagaimana cara booking dan pembayaran?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-a-text">Bisa booking lewat WhatsApp, Instagram, atau langsung datang ke lokasi kami. Pembayaran bisa cash, transfer bank, atau e-wallet (semua jenis tersedia). Kami juga punya paket membership dengan benefit khusus.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-q-text">Apakah boleh membawa teman atau rombongan?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-a-text">Sangat boleh! Bahkan kami punya paket group gaming untuk rombongan. Minimal 5 orang dapat diskon tambahan 25%. Cocok untuk gathering kantor, acara komunitas, atau team building.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-q-text">Bagaimana kalau PC/PS5 error atau lag?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-a-text">Ada technician standby 24/7 yang siap bantu. Kalau ada masalah hardware atau software, kami langsung ganti unit lain atau troubleshoot. Dijamin waktu bermain-mu tidak berkurang.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-q-text">Apakah ada membership atau paket bulanan?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-a-text">Ada! Member kami dapat benefit: diskon 30%, free upgrade ke unit premium, prioritas booking, dan akses ke event eksklusif. Paket bulanan dengan harga spesial tersedia untuk member setia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">NEXUS RENTAL</span>
+        <p class="footer-tagline">Rental gaming premium untuk generasi yang tidak mau kompromi. Setup terbaik, harga terjangkau, pengalaman tak terlupakan.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social">Instagram</a>
+          <a href="#" class="footer-social">WhatsApp</a>
+          <a href="#" class="footer-social">Discord</a>
+          <a href="#" class="footer-social">TikTok</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigasi</h5>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="layanan.html">Layanan</a></li>
+          <li><a href="review.html">Review & FAQ</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Unit Kami</h5>
+        <ul>
+          <li><a href="#">PS5 Zone</a></li>
+          <li><a href="#">PC Gaming</a></li>
+          <li><a href="#">VR Experience</a></li>
+          <li><a href="#">Tournament Area</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="#">Tentang Kami</a></li>
+          <li><a href="#">Kebijakan</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 <span>NEXUS RENTAL</span>. All rights reserved. Made with passion in Jambi.</p>
+      <div class="footer-status">
+        <span class="status-dot"></span>
+        ALL SYSTEMS OPERATIONAL
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
