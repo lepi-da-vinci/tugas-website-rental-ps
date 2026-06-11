@@ -7,9 +7,8 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- CURSOR -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+
+  <input type="checkbox" id="menu-toggle" style="position:fixed;opacity:0;pointer-events:none;z-index:-1;">
 
   <!-- NAV -->
   <nav id="navbar">
@@ -20,32 +19,34 @@
     <ul class="nav-links">
       <li><a href="index.html">Beranda</a></li>
       <li><a href="layanan.html">Layanan</a></li>
-      <li><a href="review.html">Review & FAQ</a></li>
+      <li><a href="review.html">Review &amp; FAQ</a></li>
       <li><a href="kontak.html">Kontak</a></li>
     </ul>
     <a href="kontak.html" class="nav-cta">Book Now</a>
-    <div class="burger" id="burger">
+    <label class="burger-label" for="menu-toggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
-    </div>
+    </label>
   </nav>
 
   <!-- MOBILE NAV -->
-  <div class="nav-mobile" id="mobileNav">
-    <a href="index.html" onclick="closeMobile()">Beranda</a>
-    <a href="layanan.html" onclick="closeMobile()">Layanan</a>
-    <a href="review.html" onclick="closeMobile()">Review & FAQ</a>
-    <a href="kontak.html" onclick="closeMobile()">Kontak</a>
+  <div class="nav-mobile">
+    <a href="index.html">Beranda</a>
+    <a href="layanan.html">Layanan</a>
+    <a href="review.html">Review &amp; FAQ</a>
+    <a href="kontak.html">Kontak</a>
   </div>
 
   <!-- CONTACT SECTION -->
-  <section id="contact">
+  <section id="contact" style="padding-top: 10rem;">
     <div class="section-header">
-      <div class="section-label">Hubungi Kami</div>
-      <h2 class="section-title">Siap untuk <em>Level Up?</em></h2>
-      <p class="contact-tagline">Hubungi kami untuk booking atau pertanyaan. Response time maksimal 1 jam!</p>
+      <div>
+        <div class="section-label">Hubungi Kami</div>
+        <h2 class="section-title">Siap untuk <em>Level Up?</em></h2>
+        <p class="contact-tagline">Hubungi kami untuk booking atau pertanyaan. Response time maksimal 1 jam!</p>
+      </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin: 4rem 0;">
+    <div class="contact-grid">
       <!-- LEFT: CONTACT INFO -->
       <div class="contact-info reveal-left">
         <div class="contact-methods">
@@ -93,10 +94,11 @@
 
       <!-- RIGHT: BOOKING FORM -->
       <div class="reveal-right">
-        <form class="contact-form" id="contactForm">
+        <!-- Native HTML form action — sends via mailto or to a backend -->
+        <form class="contact-form" method="post" action="mailto:info@nexusrental.com" enctype="text/plain">
           <div class="form-group">
             <label for="nama">Nama Lengkap*</label>
-            <input type="text" id="nama" name="nama" required>
+            <input type="text" id="nama" name="nama" required placeholder="Nama kamu">
           </div>
 
           <div class="form-row">
@@ -106,7 +108,7 @@
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email">
+              <input type="email" id="email" name="email" placeholder="email@kamu.com">
             </div>
           </div>
 
@@ -144,7 +146,7 @@
             <textarea id="pesan" name="pesan" placeholder="Ada permintaan khusus? Tulis di sini..."></textarea>
           </div>
 
-          <button type="button" class="form-submit" id="submitBtn" onclick="handleSubmit()">KIRIM BOOKING REQUEST →</button>
+          <button type="submit" class="form-submit">KIRIM BOOKING REQUEST →</button>
         </form>
       </div>
     </div>
@@ -157,10 +159,10 @@
         <span class="footer-logo">NEXUS RENTAL</span>
         <p class="footer-tagline">Rental gaming premium untuk generasi yang tidak mau kompromi. Setup terbaik, harga terjangkau, pengalaman tak terlupakan.</p>
         <div class="footer-socials">
-          <a href="#" class="footer-social">Instagram</a>
-          <a href="#" class="footer-social">WhatsApp</a>
-          <a href="#" class="footer-social">Discord</a>
-          <a href="#" class="footer-social">TikTok</a>
+          <a href="#" class="footer-social">ig</a>
+          <a href="#" class="footer-social">tt</a>
+          <a href="#" class="footer-social">yt</a>
+          <a href="#" class="footer-social">wa</a>
         </div>
       </div>
       <div class="footer-col">
@@ -168,7 +170,7 @@
         <ul>
           <li><a href="index.html">Beranda</a></li>
           <li><a href="layanan.html">Layanan</a></li>
-          <li><a href="review.html">Review & FAQ</a></li>
+          <li><a href="review.html">Review &amp; FAQ</a></li>
           <li><a href="kontak.html">Kontak</a></li>
         </ul>
       </div>
@@ -192,7 +194,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2024 <span>NEXUS RENTAL</span>. All rights reserved. Made with passion in Jambi.</p>
+      <p class="footer-copy">© 2025 <span>NEXUS RENTAL</span>. All rights reserved. Made with passion in Jambi.</p>
       <div class="footer-status">
         <span class="status-dot"></span>
         ALL SYSTEMS OPERATIONAL
@@ -200,6 +202,5 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>

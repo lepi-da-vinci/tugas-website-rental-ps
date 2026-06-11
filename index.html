@@ -1,257 +1,492 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="NEXUS RENTAL — Rental gaming premium setup PC, console, dan VR terkini. Pengalaman gaming tak tertandingi untuk anak muda dan para gamer sejati."
+    />
+    <meta
+      name="keywords"
+      content="rental gaming, rental PS5, rental PC gaming, rental VR, gaming cafe, nexus rental"
+    />
+    <meta name="author" content="NEXUS RENTAL" />
+    <meta property="og:title" content="NEXUS RENTAL — Level Up Your Game" />
+    <meta
+      property="og:description"
+      content="Rental gaming premium dengan teknologi terkini. Rasakan pengalaman gaming di level berbeda."
+    />
+    <meta property="og:type" content="website" />
+    <title>NEXUS RENTAL — Level Up Your Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- CSS-only mobile menu toggle (must be before nav) -->
+    <input
+      type="checkbox"
+      id="menu-toggle"
+      class="sr-only"
+      style="position: fixed; opacity: 0; pointer-events: none; z-index: -1"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="NEXUS RENTAL — Rental gaming premium  setup PC, console, dan VR terkini. Pengalaman gaming tak tertandingi untuk anak muda dan para gamer sejati.">
-  <meta name="keywords"
-    content="rental gaming, rental PS5, rental PC gaming, rental VR, gamdenganing cafe, nexus rental">
-  <meta name="author" content="NEXUS RENTAL">
-  <meta property="og:title" content="NEXUS RENTAL — Level Up Your Game">
-  <meta property="og:description"
-    content="Rental gaming premium dengan teknologi terkini. Rasakan pengalaman gaming di level berbeda.">
-  <meta property="og:type" content="website">
-  <title>NEXUS RENTAL — Level Up Your Game</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
+    <!-- NAV -->
+    <nav id="navbar">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-mark"></div>
+        NEXUS
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="layanan.html">Layanan</a></li>
+        <li><a href="review.html">Review & FAQ</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+      <a href="kontak.html" class="nav-cta">Book Now</a>
+      <label class="burger-label" for="menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </label>
+    </nav>
 
-<body>
-  <!-- CURSOR -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
-  <!-- NAV -->
-  <nav id="navbar">
-    <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark"></div>
-      NEXUS
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Beranda</a></li>
-      <li><a href="layanan.html">Layanan</a></li>
-      <li><a href="review.html">Review & FAQ</a></li>
-      <li><a href="kontak.html">Kontak</a></li>
-    </ul>
-    <a href="kontak.html" class="nav-cta">Book Now</a>
-    <div class="burger" id="burger">
-      <span></span><span></span><span></span>
-    </div>
-  </nav>
-
-  <!-- MOBILE NAV (Versi Baru Saja) -->
-  <div class="nav-mobile" id="mobileNav">
-    <a href="index.html" onclick="closeMobile()">Beranda</a>
-    <a href="layanan.html" onclick="closeMobile()">Layanan</a>
-    <a href="review.html" onclick="closeMobile()">Review & FAQ</a>
-    <a href="kontak.html" onclick="closeMobile()">Kontak</a>
-  </div>
-
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-glow-2"></div>
-    <div class="hero-tag">EST. 2022 — KOTA JAMBI</div>
-    <h1 class="hero-title">
-      <span class="line1">LEVEL UP</span>
-      <span class="line2">YOUR</span>
-      <span class="line3">GAME</span>
-    </h1>
-    <p class="hero-sub">Rental gaming premium dengan setup kelas dunia. PS5, PC RTX 4090, dan VR terkini siap menemani
-      setiap sesi gaming-mu — dari casual hingga kompetitif.</p>
-    <div class="hero-actions">
-      <a href="layanan.html" class="btn-primary">Lihat Paket</a>
-      <a href="kontak.html" class="btn-ghost">Book Sekarang</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-number">500+</span>
-        <span class="stat-label">Pelanggan Aktif</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">12</span>
-        <span class="stat-label">Unit Premium</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">24/7</span>
-        <span class="stat-label">Siap Beroperasi</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">4.9★</span>
-        <span class="stat-label">Rating Google</span>
-      </div>
+    <!-- MOBILE NAV -->
+    <div class="nav-mobile">
+      <a href="index.html">Beranda</a>
+      <a href="layanan.html">Layanan</a>
+      <a href="review.html">Review &amp; FAQ</a>
+      <a href="kontak.html">Kontak</a>
     </div>
 
-    <!-- SVG Hero Visual -->
-    <div class="hero-visual">
-      <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:0.8" />
-            <stop offset="100%" style="stop-color:#00b4c8;stop-opacity:0.2" />
-          </linearGradient>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <!-- Decorative lines -->
-        <line x1="100" y1="50" x2="500" y2="50" stroke="rgba(0,229,255,0.15)" stroke-width="1" />
-        <line x1="50" y1="100" x2="50" y2="400" stroke="rgba(0,229,255,0.1)" stroke-width="1" />
-        <line x1="550" y1="100" x2="550" y2="400" stroke="rgba(0,229,255,0.1)" stroke-width="1" />
-        <!-- Controller outline -->
-        <path
-          d="M180 200 Q160 180 140 200 L120 280 Q110 320 150 330 L180 330 L200 300 L280 300 L300 330 L330 330 Q370 330 360 290 L340 200 Q320 180 300 200 Z"
-          fill="none" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)" opacity="0.7" />
-        <!-- D-pad -->
-        <rect x="145" y="240" width="12" height="36" rx="2" fill="none" stroke="#00e5ff" stroke-width="1.5"
-          opacity="0.5" />
-        <rect x="133" y="252" width="36" height="12" rx="2" fill="none" stroke="#00e5ff" stroke-width="1.5"
-          opacity="0.5" />
-        <!-- Buttons -->
-        <circle cx="290" cy="235" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5" />
-        <circle cx="310" cy="255" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5" />
-        <circle cx="290" cy="275" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5" />
-        <circle cx="270" cy="255" r="8" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5" />
-        <!-- Center button glowing -->
-        <circle cx="240" cy="210" r="12" fill="rgba(0,229,255,0.15)" stroke="#00e5ff" stroke-width="1"
-          filter="url(#glow)" />
-        <!-- Analog sticks -->
-        <circle cx="195" cy="265" r="15" fill="none" stroke="#00b4c8" stroke-width="1.5" opacity="0.6" />
-        <circle cx="265" cy="285" r="15" fill="none" stroke="#00b4c8" stroke-width="1.5" opacity="0.6" />
-        <!-- Scan lines on controller -->
-        <line x1="140" y1="220" x2="340" y2="220" stroke="rgba(0,229,255,0.08)" stroke-width="1" />
-        <line x1="135" y1="240" x2="345" y2="240" stroke="rgba(0,229,255,0.08)" stroke-width="1" />
-        <line x1="135" y1="260" x2="345" y2="260" stroke="rgba(0,229,255,0.08)" stroke-width="1" />
-        <line x1="138" y1="280" x2="342" y2="280" stroke="rgba(0,229,255,0.08)" stroke-width="1" />
-        <line x1="145" y1="300" x2="335" y2="300" stroke="rgba(0,229,255,0.08)" stroke-width="1" />
-        <!-- Corner brackets -->
-        <path d="M80 150 L80 120 L110 120" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4" />
-        <path d="M490 150 L490 120 L460 120" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4" />
-        <path d="M80 350 L80 380 L110 380" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4" />
-        <path d="M490 350 L490 380 L460 380" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4" />
-        <!-- Floating data points -->
-        <circle cx="420" cy="160" r="3" fill="#00e5ff" opacity="0.6" filter="url(#glow)">
-          <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="160" cy="380" r="3" fill="#00e5ff" opacity="0.5" filter="url(#glow)">
-          <animate attributeName="opacity" values="0.5;0.15;0.5" dur="2.5s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="460" cy="350" r="2" fill="#00e5ff" opacity="0.4" filter="url(#glow)">
-          <animate attributeName="opacity" values="0.4;0.1;0.4" dur="1.8s" repeatCount="indefinite" />
-        </circle>
-        <!-- Data text -->
-        <text x="380" y="175" font-family="Share Tech Mono" font-size="9" fill="#00e5ff" opacity="0.4">SYS:
-          ONLINE</text>
-        <text x="380" y="188" font-family="Share Tech Mono" font-size="9" fill="#00e5ff" opacity="0.3">RTX: 4090</text>
-        <text x="380" y="201" font-family="Share Tech Mono" font-size="9" fill="#00e5ff" opacity="0.3">FPS: 240</text>
-      </svg>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="reveal-left">
-      <div class="section-label">Tentang Kami</div>
-      <h2 class="about-heading">Bukan Sekadar<br><em>Rental Biasa</em></h2>
-      <p class="about-text">NEXUS lahir dari obsesi kami terhadap gaming. Kami percaya setiap gamer berhak merasakan
-        performa terbaik — tanpa harus beli hardware seharga jutaan.</p>
-      <p class="about-text">Dengan unit yang diupgrade rutin, koneksi fiber 1Gbps, dan suasana yang dirancang khusus
-        untuk fokus dan nyaman, NEXUS adalah rumah kedua para gamer.</p>
-      <div class="about-features">
-        <div class="about-feature">Koneksi Fiber Optik 1 Gbps, zero lag</div>
-        <div class="about-feature">Hardware diupgrade setiap 18 bulan</div>
-        <div class="about-feature">AC full room, kursi ergonomis premium</div>
-        <div class="about-feature">Game library 300+ judul siap main</div>
-        <div class="about-feature">Teknisi standby, troubleshoot instan</div>
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-glow-2"></div>
+      <div class="hero-tag">EST. 2022 — KOTA JAMBI</div>
+      <h1 class="hero-title">
+        <span class="line1">LEVEL UP</span>
+        <span class="line2">YOUR</span>
+        <span class="line3">GAME</span>
+      </h1>
+      <p class="hero-sub">
+        Rental gaming premium dengan setup kelas dunia. PS5, PC RTX 4090, dan VR
+        terkini siap menemani setiap sesi gaming-mu — dari casual hingga
+        kompetitif.
+      </p>
+      <div class="hero-actions">
+        <a href="layanan.html" class="btn-primary">Lihat Paket</a>
+        <a href="kontak.html" class="btn-ghost">Book Sekarang</a>
       </div>
-    </div>
-    <div class="about-visual reveal-right">
-      <div class="about-card">
-        <div class="about-card-cell">
-          <div class="about-card-cell-icon">🎮</div>
-          <h4>Console Zone</h4>
-          <p>PS5, Xbox Series X</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Pelanggan Aktif</span>
         </div>
-        <div class="about-card-cell">
-          <div class="about-card-cell-icon">🖥️</div>
-          <h4>PC Battlestation</h4>
-          <p>RTX 4090, 240Hz</p>
+        <div class="stat-item">
+          <span class="stat-number">12</span>
+          <span class="stat-label">Unit Premium</span>
         </div>
-        <div class="about-card-cell">
-          <div class="about-card-cell-icon">🥽</div>
-          <h4>VR Arena</h4>
-          <p>Meta Quest 3, PSVR2</p>
+        <div class="stat-item">
+          <span class="stat-number">24/7</span>
+          <span class="stat-label">Siap Beroperasi</span>
         </div>
-        <div class="about-card-cell">
-          <div class="about-card-cell-icon">⚡</div>
-          <h4>Esports Corner</h4>
-          <p>Setup kompetitif</p>
+        <div class="stat-item">
+          <span class="stat-number">4.9★</span>
+          <span class="stat-label">Rating Google</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <span class="footer-logo">NEXUS RENTAL</span>
-        <p class="footer-tagline">Rental gaming premium untuk generasi yang tidak mau kompromi. Setup terbaik, harga
-          terjangkau, pengalaman tak terlupakan.</p>
-        <div class="footer-socials">
-          <a href="#" class="footer-social">ig</a>
-          <a href="#" class="footer-social">tt</a>
-          <a href="#" class="footer-social">yt</a>
-          <a href="#" class="footer-social">wa</a>
+      <!-- SVG Hero Visual -->
+      <div class="hero-visual">
+        <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop
+                offset="0%"
+                style="stop-color: #00e5ff; stop-opacity: 0.8"
+              />
+              <stop
+                offset="100%"
+                style="stop-color: #00b4c8; stop-opacity: 0.2"
+              />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <line
+            x1="100"
+            y1="50"
+            x2="500"
+            y2="50"
+            stroke="rgba(0,229,255,0.15)"
+            stroke-width="1"
+          />
+          <line
+            x1="50"
+            y1="100"
+            x2="50"
+            y2="400"
+            stroke="rgba(0,229,255,0.1)"
+            stroke-width="1"
+          />
+          <line
+            x1="550"
+            y1="100"
+            x2="550"
+            y2="400"
+            stroke="rgba(0,229,255,0.1)"
+            stroke-width="1"
+          />
+          <path
+            d="M180 200 Q160 180 140 200 L120 280 Q110 320 150 330 L180 330 L200 300 L280 300 L300 330 L330 330 Q370 330 360 290 L340 200 Q320 180 300 200 Z"
+            fill="none"
+            stroke="url(#cyanGrad)"
+            stroke-width="2"
+            filter="url(#glow)"
+            opacity="0.7"
+          />
+          <rect
+            x="145"
+            y="240"
+            width="12"
+            height="36"
+            rx="2"
+            fill="none"
+            stroke="#00e5ff"
+            stroke-width="1.5"
+            opacity="0.5"
+          />
+          <rect
+            x="133"
+            y="252"
+            width="36"
+            height="12"
+            rx="2"
+            fill="none"
+            stroke="#00e5ff"
+            stroke-width="1.5"
+            opacity="0.5"
+          />
+          <circle
+            cx="290"
+            cy="235"
+            r="8"
+            fill="none"
+            stroke="#00e5ff"
+            stroke-width="1.5"
+            opacity="0.5"
+          />
+          <circle
+            cx="310"
+            cy="255"
+            r="8"
+            fill="none"
+            stroke="#00e5ff"
+            stroke-width="1.5"
+            opacity="0.5"
+          />
+          <circle
+            cx="290"
+            cy="275"
+            r="8"
+            fill="none"
+            stroke="#00e5ff"
+            stroke-width="1.5"
+            opacity="0.5"
+          />
+          <circle
+            cx="270"
+            cy="255"
+            r="8"
+            fill="none"
+            stroke="#00e5ff"
+            stroke-width="1.5"
+            opacity="0.5"
+          />
+          <circle
+            cx="240"
+            cy="210"
+            r="12"
+            fill="rgba(0,229,255,0.15)"
+            stroke="#00e5ff"
+            stroke-width="1"
+            filter="url(#glow)"
+          />
+          <circle
+            cx="195"
+            cy="265"
+            r="15"
+            fill="none"
+            stroke="#00b4c8"
+            stroke-width="1.5"
+            opacity="0.6"
+          />
+          <circle
+            cx="265"
+            cy="285"
+            r="15"
+            fill="none"
+            stroke="#00b4c8"
+            stroke-width="1.5"
+            opacity="0.6"
+          />
+          <line
+            x1="140"
+            y1="220"
+            x2="340"
+            y2="220"
+            stroke="rgba(0,229,255,0.08)"
+            stroke-width="1"
+          />
+          <line
+            x1="135"
+            y1="240"
+            x2="345"
+            y2="240"
+            stroke="rgba(0,229,255,0.08)"
+            stroke-width="1"
+          />
+          <line
+            x1="135"
+            y1="260"
+            x2="345"
+            y2="260"
+            stroke="rgba(0,229,255,0.08)"
+            stroke-width="1"
+          />
+          <line
+            x1="138"
+            y1="280"
+            x2="342"
+            y2="280"
+            stroke="rgba(0,229,255,0.08)"
+            stroke-width="1"
+          />
+          <line
+            x1="145"
+            y1="300"
+            x2="335"
+            y2="300"
+            stroke="rgba(0,229,255,0.08)"
+            stroke-width="1"
+          />
+          <path
+            d="M80 150 L80 120 L110 120"
+            fill="none"
+            stroke="#00e5ff"
+            stroke-width="1.5"
+            opacity="0.4"
+          />
+          <path
+            d="M490 150 L490 120 L460 120"
+            fill="none"
+            stroke="#00e5ff"
+            stroke-width="1.5"
+            opacity="0.4"
+          />
+          <path
+            d="M80 350 L80 380 L110 380"
+            fill="none"
+            stroke="#00e5ff"
+            stroke-width="1.5"
+            opacity="0.4"
+          />
+          <path
+            d="M490 350 L490 380 L460 380"
+            fill="none"
+            stroke="#00e5ff"
+            stroke-width="1.5"
+            opacity="0.4"
+          />
+          <circle
+            cx="420"
+            cy="160"
+            r="3"
+            fill="#00e5ff"
+            opacity="0.6"
+            filter="url(#glow)"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.6;0.2;0.6"
+              dur="2s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle
+            cx="160"
+            cy="380"
+            r="3"
+            fill="#00e5ff"
+            opacity="0.5"
+            filter="url(#glow)"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.5;0.15;0.5"
+              dur="2.5s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle
+            cx="460"
+            cy="350"
+            r="2"
+            fill="#00e5ff"
+            opacity="0.4"
+            filter="url(#glow)"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.4;0.1;0.4"
+              dur="1.8s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <text
+            x="380"
+            y="175"
+            font-family="Share Tech Mono"
+            font-size="9"
+            fill="#00e5ff"
+            opacity="0.4"
+          >
+            SYS: ONLINE
+          </text>
+          <text
+            x="380"
+            y="188"
+            font-family="Share Tech Mono"
+            font-size="9"
+            fill="#00e5ff"
+            opacity="0.3"
+          >
+            RTX: 4090
+          </text>
+          <text
+            x="380"
+            y="201"
+            font-family="Share Tech Mono"
+            font-size="9"
+            fill="#00e5ff"
+            opacity="0.3"
+          >
+            FPS: 240
+          </text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="reveal-left">
+        <div class="section-label">Tentang Kami</div>
+        <h2 class="about-heading">Bukan Sekadar<br /><em>Rental Biasa</em></h2>
+        <p class="about-text">
+          NEXUS lahir dari obsesi kami terhadap gaming. Kami percaya setiap
+          gamer berhak merasakan performa terbaik — tanpa harus beli hardware
+          seharga jutaan.
+        </p>
+        <p class="about-text">
+          Dengan unit yang diupgrade rutin, koneksi fiber 1Gbps, dan suasana
+          yang dirancang khusus untuk fokus dan nyaman, NEXUS adalah rumah kedua
+          para gamer.
+        </p>
+        <div class="about-features">
+          <div class="about-feature">Koneksi Fiber Optik 1 Gbps, zero lag</div>
+          <div class="about-feature">Hardware diupgrade setiap 18 bulan</div>
+          <div class="about-feature">AC full room, kursi ergonomis premium</div>
+          <div class="about-feature">Game library 300+ judul siap main</div>
+          <div class="about-feature">Teknisi standby, troubleshoot instan</div>
         </div>
       </div>
-      <div class="footer-col">
-        <h5>Navigasi</h5>
-        <ul>
-          <li><a href="index.html">Tentang Kami</a></li>
-          <li><a href="layanan.html">Layanan & Paket</a></li>
-          <li><a href="review.html">Review Pelanggan</a></li>
-          <li><a href="review.html">FAQ</a></li>
-          <li><a href="kontak.html">Kontak</a></li>
-        </ul>
+      <div class="about-visual reveal-right">
+        <div class="about-card">
+          <div class="about-card-cell">
+            <div class="about-card-cell-icon">🎮</div>
+            <h4>Console Zone</h4>
+            <p>PS5, Xbox Series X</p>
+          </div>
+          <div class="about-card-cell">
+            <div class="about-card-cell-icon">🖥️</div>
+            <h4>PC Battlestation</h4>
+            <p>RTX 4090, 240Hz</p>
+          </div>
+          <div class="about-card-cell">
+            <div class="about-card-cell-icon">🥽</div>
+            <h4>VR Arena</h4>
+            <p>Meta Quest 3, PSVR2</p>
+          </div>
+          <div class="about-card-cell">
+            <div class="about-card-cell-icon">⚡</div>
+            <h4>Esports Corner</h4>
+            <p>Setup kompetitif</p>
+          </div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h5>Unit Kami</h5>
-        <ul>
-          <li><a href="layanan.html">Console Zone</a></li>
-          <li><a href="layanan.html">PC Battlestation</a></li>
-          <li><a href="layanan.html">VR Arena</a></li>
-          <li><a href="layanan.html">Esports Corner</a></li>
-          <li><a href="layanan.html">Party Room</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Info</h5>
-        <ul>
-          <li><a href="#">Syarat & Ketentuan</a></li>
-          <li><a href="#">Kebijakan Privasi</a></li>
-          <li><a href="#">Refund Policy</a></li>
-          <li><a href="#">Karir</a></li>
-          <li><a href="#">Promo & Event</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2024 <span>NEXUS RENTAL</span>. All rights reserved. Made with passion in Jambi.</p>
-      <div class="footer-status">
-        <span class="status-dot"></span>
-        ALL SYSTEMS OPERATIONAL
-      </div>
-    </div>
-  </footer>
+    </section>
 
-  <script src="script.js"></script>
-</body>
-
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">NEXUS RENTAL</span>
+          <p class="footer-tagline">
+            Rental gaming premium untuk generasi yang tidak mau kompromi. Setup
+            terbaik, harga terjangkau, pengalaman tak terlupakan.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social">ig</a>
+            <a href="#" class="footer-social">tt</a>
+            <a href="#" class="footer-social">yt</a>
+            <a href="#" class="footer-social">wa</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Navigasi</h5>
+          <ul>
+            <li><a href="index.html">Tentang Kami</a></li>
+            <li><a href="layanan.html">Layanan &amp; Paket</a></li>
+            <li><a href="review.html">Review Pelanggan</a></li>
+            <li><a href="review.html">FAQ</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Unit Kami</h5>
+          <ul>
+            <li><a href="layanan.html">Console Zone</a></li>
+            <li><a href="layanan.html">PC Battlestation</a></li>
+            <li><a href="layanan.html">VR Arena</a></li>
+            <li><a href="layanan.html">Esports Corner</a></li>
+            <li><a href="layanan.html">Party Room</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Info</h5>
+          <ul>
+            <li><a href="#">Syarat &amp; Ketentuan</a></li>
+            <li><a href="#">Kebijakan Privasi</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">Karir</a></li>
+            <li><a href="#">Promo &amp; Event</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2025 <span>NEXUS RENTAL</span>. All rights reserved. Made with
+          passion in Jambi.
+        </p>
+        <div class="footer-status">
+          <span class="status-dot"></span>
+          ALL SYSTEMS OPERATIONAL
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
